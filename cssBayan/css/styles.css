@@ -1,0 +1,24 @@
+.accordion-header a {
+    display: block;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+}
+
+.accordion-header a:hover {
+    background-color: #ccc;
+}
+
+.accordion-item:target .accordion-header a {
+    background-color: greenyellow;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
+/* выбираем элемент , знак #  и id */
+.accordion-item:target .accordion-content {
+    display: block;
+}
