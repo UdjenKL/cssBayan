@@ -1,3 +1,13 @@
+.accordion {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 600px;
+    margin: 0 auto; /* задаем автоматические отступы по вертикали и горизонтали, чтобы разместить аккордеон по центру */
+}
+.accordion img {
+    max-width: 100%;
+    max-height:300px;
+}
 .accordion-header a {
     display: block;
     padding: 10px;
