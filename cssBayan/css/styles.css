@@ -10,6 +10,17 @@ body {
     max-width: 600px;
     margin: 0 auto;
 }
+.accordion-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../icons/plus-solid.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.accordion-icon.active {
+    background-image: url('../icons/minus-solid.svg');
+}
 
 /* свойства для изображения внутри элемента */
 .accordion-content img {
@@ -33,35 +44,21 @@ body {
 
 /* свойства для заголовка при наведении мыши */
 .accordion-header:hover {
-    background-color: lightgreen;
+    background-color: #F75206;
 }
 
 /* скрытие элемента input с типом checkbox */
 .accordion-item input[type="checkbox"] {
     display: none;
 }
+/* меняем иконку "+" на "-" */
+.accordion-item input[type="checkbox"]:checked + .accordion-header .accordion-icon {
+    background-image: url('../icons/minus-solid.svg');
+}
 
-/* устанавливаем цвет фона заголовка если выбран checked */
+/* цвет заголовка выбранного item */
 .accordion-item input[type="checkbox"]:checked + .accordion-header {
     background-color: #FDD519;
-}
-
-/* меняем иконку */
-.accordion-item input[type="checkbox"]:checked + .accordion-header .accordion-icon::before {
-    content: "-";
-}
-.accordion-item .accordion-icon::before {
-    content: "+";
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-.accordion-item .accordion-icon {
-    width: 24px;
-    height: 24px;
-    background-image: url('icons/plus-solid.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 /* контент */
@@ -73,3 +70,4 @@ body {
 .accordion-item input[type="checkbox"]:checked + .accordion-header + .accordion-content {
     display: block;
 }
+
