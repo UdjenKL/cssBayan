@@ -1,34 +1,70 @@
+/* свойства для контейнера аккордион */
 .accordion {
     border: 1px solid #ccc;
     border-radius: 4px;
     max-width: 600px;
-    margin: 0 auto; /* задаем автоматические отступы по вертикали и горизонтали, чтобы разместить аккордеон по центру */
+    margin: 0 auto;
 }
-.accordion img {
+
+/* свойства для изображения внутри элемента */
+.accordion-content img {
+    display: block;
+    margin: 0 auto;
     max-width: 100%;
     max-height:300px;
 }
-.accordion-header a {
-    display: block;
+
+/* свойства заголовка элемента */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
     background-color: #f0f0f0;
     color: #333;
     text-decoration: none;
+    cursor: pointer;
 }
 
-.accordion-header a:hover {
+/* свойства для заголовка при наведении мыши */
+.accordion-header:hover {
     background-color: #ccc;
 }
 
-.accordion-item:target .accordion-header a {
+/* скрытие элемента input с типом checkbox */
+.accordion-item input[type="checkbox"] {
+    display: none;
+}
+
+/* устанавливаем цвет фона заголовка если выбран checked */
+.accordion-item input[type="checkbox"]:checked + .accordion-header {
     background-color: greenyellow;
 }
 
+/* меняем иконку */
+.accordion-item input[type="checkbox"]:checked + .accordion-header .accordion-icon::before {
+    content: "-";
+}
+.accordion-item .accordion-icon::before {
+    content: "+";
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.accordion-item .accordion-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('icons/plus-solid.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* контент */
 .accordion-content {
     display: none;
     padding: 10px;
 }
-/* выбираем элемент , знак #  и id */
-.accordion-item:target .accordion-content {
+/* отображение контента если элемент выбран */
+.accordion-item input[type="checkbox"]:checked + .accordion-header + .accordion-content {
     display: block;
 }
