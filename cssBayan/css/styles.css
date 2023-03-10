@@ -1,3 +1,8 @@
+body {
+    background: linear-gradient(to bottom, #FFDAA8, WHITE);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 /* свойства для контейнера аккордион */
 .accordion {
     border: 1px solid #ccc;
@@ -28,7 +33,7 @@
 
 /* свойства для заголовка при наведении мыши */
 .accordion-header:hover {
-    background-color: #ccc;
+    background-color: lightgreen;
 }
 
 /* скрытие элемента input с типом checkbox */
@@ -38,7 +43,7 @@
 
 /* устанавливаем цвет фона заголовка если выбран checked */
 .accordion-item input[type="checkbox"]:checked + .accordion-header {
-    background-color: greenyellow;
+    background-color: #FDD519;
 }
 
 /* меняем иконку */
