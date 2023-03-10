@@ -1,8 +1,12 @@
 body {
+    /* устанавливаем фон градиентом */
     background: linear-gradient(to bottom, #FFDAA8, WHITE);
+    /* запрещаем повторение фона */
     background-repeat: no-repeat;
+    /* зафиксируем фон на экране */
     background-attachment: fixed;
 }
+
 /* свойства для контейнера аккордион */
 .accordion {
     border: 1px solid #ccc;
@@ -10,6 +14,32 @@ body {
     max-width: 600px;
     margin: 0 auto;
 }
+
+.accordion-item {
+    background-color: white;
+}
+
+.accordion-header {
+    cursor: pointer;
+}
+
+.accordion-item:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.accordion-item:hover img {
+    /* свойство, которое задает эффект оттенков */
+    filter: grayscale(100%);
+    /* плавное изменение св-ва filter */
+    transition: filter 0.3s ease-in-out;
+}
+
+.accordion-item:hover img:hover {
+    /* отмена эффекта оттенка серого для изображения при наведении на само изображение. */
+    filter: grayscale(0%);
+}
+
 .accordion-icon {
     width: 24px;
     height: 24px;
@@ -27,8 +57,30 @@ body {
     display: block;
     margin: 0 auto;
     max-width: 100%;
-    max-height:300px;
+    max-height: 300px;
+
+    /* Анимация плавного увеличения картинки */
+    animation-name: zoomIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+
+    /* Начальное состояние картинки */
+    transform: scale(0);
+
+    /* Конечное состояние картинки */
+    animation-fill-mode: forwards;
 }
+
+/* Определение анимации */
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
 
 /* свойства заголовка элемента */
 .accordion-header {
@@ -51,6 +103,7 @@ body {
 .accordion-item input[type="checkbox"] {
     display: none;
 }
+
 /* меняем иконку "+" на "-" */
 .accordion-item input[type="checkbox"]:checked + .accordion-header .accordion-icon {
     background-image: url('../icons/minus-solid.svg');
@@ -66,8 +119,12 @@ body {
     display: none;
     padding: 10px;
 }
+
+.accordion-item .accordion-content {
+    display: none;
+}
+
 /* отображение контента если элемент выбран */
 .accordion-item input[type="checkbox"]:checked + .accordion-header + .accordion-content {
     display: block;
 }
-
