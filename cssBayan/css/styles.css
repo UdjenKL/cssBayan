@@ -19,6 +19,7 @@ body {
     background-color: white;
 }
 
+
 .accordion-header {
     cursor: pointer;
 }
@@ -46,8 +47,13 @@ body {
     background-image: url('../icons/plus-solid.svg');
     background-size: contain;
     background-repeat: no-repeat;
+    visibility: hidden;
 }
 
+/* отображение иконок , если курсор находится на аккордионе */
+.accordion:hover .accordion-icon {
+    visibility: visible;
+}
 .accordion-icon.active {
     background-image: url('../icons/minus-solid.svg');
 }
@@ -127,4 +133,13 @@ body {
 /* отображение контента если элемент выбран */
 .accordion-item input[type="checkbox"]:checked + .accordion-header + .accordion-content {
     display: block;
+}
+
+.accordion-item:hover .accordion-content {
+    display: block;
+}
+
+/* cкрываем изображение если указатель не на аккордионе */
+.accordion-item:not(:hover) .accordion-content {
+    display: none;
 }
