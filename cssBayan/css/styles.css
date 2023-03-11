@@ -1,10 +1,11 @@
+/* Загрузка шрифта Montserrat */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 body {
-    /* устанавливаем фон градиентом */
-    background: linear-gradient(to bottom, #FFDAA8, WHITE);
-    /* запрещаем повторение фона */
+    background: linear-gradient(to bottom, #bbb, #eee);
     background-repeat: no-repeat;
-    /* зафиксируем фон на экране */
     background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* свойства для контейнера аккордион */
@@ -16,8 +17,9 @@ body {
 }
 
 .item {
+
     background-color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
     transition: box-shadow 0.9s ease-in-out;
 }
 
@@ -31,7 +33,6 @@ body {
 }
 
 .item:hover {
-
     background-color: #f2f2f2;
     cursor: pointer;
 }
@@ -70,6 +71,7 @@ body {
 .accordion-icon.active {
     background-image: url('../icons/check-solid.svg');
 }
+
 /* свойства для изображения внутри элемента */
 .accordion-content img {
     display: block;
@@ -113,17 +115,17 @@ body {
 
 /* свойства для заголовка при наведении мыши */
 .accordion-header:hover {
-    background-color: #F75206;
+    background-color: #C1C1C1;
 }
 
 /* меняем иконку "+" на "-" */
 .item input[type="radio"]:checked + .accordion-header .accordion-icon {
-    background-image: url('../icons/check-solid.svg');
+    background-image: url('../icons/check.png');
 }
 
 /* цвет заголовка выбранного radio-button-3 */
 .item input[type="radio"]:checked + .accordion-header {
-    background-color: #FDD519;
+    background-color: lightseagreen;
 }
 
 /* контент */
