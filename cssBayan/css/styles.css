@@ -68,7 +68,7 @@ body {
 }
 
 .accordion-icon.active {
-    background-image: url('../icons/minus-solid.svg');
+    background-image: url('../icons/check-solid.svg');
 }
 /* свойства для изображения внутри элемента */
 .accordion-content img {
@@ -118,7 +118,7 @@ body {
 
 /* меняем иконку "+" на "-" */
 .item input[type="radio"]:checked + .accordion-header .accordion-icon {
-    background-image: url('../icons/minus-solid.svg');
+    background-image: url('../icons/check-solid.svg');
 }
 
 /* цвет заголовка выбранного radio-button-3 */
