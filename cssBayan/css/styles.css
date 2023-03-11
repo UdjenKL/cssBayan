@@ -15,8 +15,10 @@ body {
     margin: 0 auto;
 }
 
-.accordion-item {
+.item {
     background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.9);
+    transition: box-shadow 0.9s ease-in-out;
 }
 
 
@@ -24,19 +26,24 @@ body {
     cursor: pointer;
 }
 
-.accordion-item:hover {
+.accordion-header:hover {
+    color: white;
+}
+
+.item:hover {
+
     background-color: #f2f2f2;
     cursor: pointer;
 }
 
-.accordion-item:hover img {
+.item:hover img {
     /* свойство, которое задает эффект оттенков */
     filter: grayscale(100%);
     /* плавное изменение св-ва filter */
     transition: filter 0.3s ease-in-out;
 }
 
-.accordion-item:hover img:hover {
+.item:hover img:hover {
     /* отмена эффекта оттенка серого для изображения при наведении на само изображение. */
     filter: grayscale(0%);
 }
@@ -48,16 +55,21 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     visibility: hidden;
+    transition: transform 0.9s ease-in-out;
 }
 
+/* анимация для иконки при клике на аккордеон */
+.item input[type="radio"]:checked + .accordion-header .accordion-icon {
+    transform: scale(1.5);
+}
 /* отображение иконок , если курсор находится на аккордионе */
 .accordion:hover .accordion-icon {
     visibility: visible;
 }
+
 .accordion-icon.active {
     background-image: url('../icons/minus-solid.svg');
 }
-
 /* свойства для изображения внутри элемента */
 .accordion-content img {
     display: block;
@@ -92,7 +104,6 @@ body {
 .accordion-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 10px;
     background-color: #f0f0f0;
     color: #333;
@@ -105,18 +116,13 @@ body {
     background-color: #F75206;
 }
 
-/* скрытие элемента input с типом checkbox */
-.accordion-item input[type="checkbox"] {
-    display: none;
-}
-
 /* меняем иконку "+" на "-" */
-.accordion-item input[type="checkbox"]:checked + .accordion-header .accordion-icon {
+.item input[type="radio"]:checked + .accordion-header .accordion-icon {
     background-image: url('../icons/minus-solid.svg');
 }
 
-/* цвет заголовка выбранного item */
-.accordion-item input[type="checkbox"]:checked + .accordion-header {
+/* цвет заголовка выбранного radio-button-3 */
+.item input[type="radio"]:checked + .accordion-header {
     background-color: #FDD519;
 }
 
@@ -126,20 +132,34 @@ body {
     padding: 10px;
 }
 
-.accordion-item .accordion-content {
+input[type="radio"] {
     display: none;
 }
 
-/* отображение контента если элемент выбран */
-.accordion-item input[type="checkbox"]:checked + .accordion-header + .accordion-content {
-    display: block;
-}
-
-.accordion-item:hover .accordion-content {
-    display: block;
-}
-
-/* cкрываем изображение если указатель не на аккордионе */
-.accordion-item:not(:hover) .accordion-content {
+.item .accordion-content {
     display: none;
 }
+
+.item input[type="radio"]:checked + .accordion-header + .accordion-content {
+    display: block;
+}
+
+.item:not(:hover) input[type="radio"]:not(:checked) + .accordion-header + .accordion-content {
+    display: none;
+}
+
+
+.item:hover .accordion-content {
+    display: block;
+}
+
+.item:not(:hover) .accordion-content {
+    display: none;
+}
+
+/* закрытие предыдущего элемента */
+.item input[type="radio"]:checked ~ .item:not(:target) .accordion-content {
+    display: none;
+}
+
+
