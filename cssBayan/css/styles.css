@@ -1,0 +1,167 @@
+/* Загрузка шрифта Montserrat */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+    background: linear-gradient(to bottom, #bbb, #eee);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* свойства для контейнера аккордион */
+.accordion {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.item {
+
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    transition: box-shadow 0.9s ease-in-out;
+}
+
+
+.accordion-header {
+    cursor: pointer;
+}
+
+.accordion-header:hover {
+    color: white;
+}
+
+.item:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.item:hover img {
+    /* свойство, которое задает эффект оттенков */
+    filter: grayscale(100%);
+    /* плавное изменение св-ва filter */
+    transition: filter 0.3s ease-in-out;
+}
+
+.item:hover img:hover {
+    /* отмена эффекта оттенка серого для изображения при наведении на само изображение. */
+    filter: grayscale(0%);
+}
+
+.accordion-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('../icons/plus-solid.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    transition: transform 0.9s ease-in-out;
+}
+
+/* анимация для иконки при клике на аккордеон */
+.item input[type="radio"]:checked + .accordion-header .accordion-icon {
+    transform: scale(1.5);
+}
+/* отображение иконок , если курсор находится на аккордионе */
+.accordion:hover .accordion-icon {
+    visibility: visible;
+}
+
+.accordion-icon.active {
+    background-image: url('../icons/check-solid.svg');
+}
+
+/* свойства для изображения внутри элемента */
+.accordion-content img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 300px;
+
+    /* Анимация плавного увеличения картинки */
+    animation-name: zoomIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+
+    /* Начальное состояние картинки */
+    transform: scale(0);
+
+    /* Конечное состояние картинки */
+    animation-fill-mode: forwards;
+}
+
+/* Определение анимации */
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* свойства заголовка элемента */
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* свойства для заголовка при наведении мыши */
+.accordion-header:hover {
+    background-color: #C1C1C1;
+}
+
+/* меняем иконку "+" на "-" */
+.item input[type="radio"]:checked + .accordion-header .accordion-icon {
+    background-image: url('../icons/check.png');
+}
+
+/* цвет заголовка выбранного radio-button-3 */
+.item input[type="radio"]:checked + .accordion-header {
+    background-color: lightseagreen;
+}
+
+/* контент */
+.accordion-content {
+    display: none;
+    padding: 10px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.item .accordion-content {
+    display: none;
+}
+
+.item input[type="radio"]:checked + .accordion-header + .accordion-content {
+    display: block;
+}
+
+.item:not(:hover) input[type="radio"]:not(:checked) + .accordion-header + .accordion-content {
+    display: none;
+}
+
+
+.item:hover .accordion-content {
+    display: block;
+}
+
+.item:not(:hover) .accordion-content {
+    display: none;
+}
+
+/* закрытие предыдущего элемента */
+.item input[type="radio"]:checked ~ .item:not(:target) .accordion-content {
+    display: none;
+}
+
+
